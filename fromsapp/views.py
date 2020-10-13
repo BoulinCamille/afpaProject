@@ -17,7 +17,7 @@ from selenium.webdriver.common.keys import Keys
 
 
 
-def contact(request):
+def index(request):
 
     form = ContactForm()
 
@@ -552,6 +552,7 @@ def favorites(request):
             maxgaming_url = form.cleaned_data.get('maxgaming_url')
             added_favorite = Favorite(name=name, amazon_price=amazon_price, ldlc_price=ldlc_price, maxgaming_price=maxgaming_price, amazon_url=amazon_url, ldlc_url=ldlc_url, maxgaming_url=maxgaming_url, search_user=user)
             added_favorite.save()
+            messages.success(request, f'Added to favourites')
 
     args = {
         'favorites' : user.favorite_set.all(),
